@@ -18,12 +18,23 @@ function Calculate() {
     })
     this.classList.add('tipBtnSelected');
 
-    let calculatedTip = parseFloat(this.dataset.value) * parseFloat(inputAmt.value);
     let numBillAmt = parseFloat(inputAmt.value);
-    let numTotal = calculatedTip + numBillAmt;
 
-    billAmt.innerText = inputAmt.value;
-    tipPercent.innerText = this.innerText;
-    tipAmount.innerText = calculatedTip.toFixed(2);
-    total.innerText = numTotal.toFixed(2);
+    if (numBillAmt > 0) {
+        inputAmt.classList.remove('invalid');
+        let calculatedTip = parseFloat(this.dataset.value) * parseFloat(inputAmt.value);
+        let numTotal = calculatedTip + numBillAmt;
+
+        billAmt.innerText = "$" + inputAmt.value;
+        tipPercent.innerText = this.innerText;
+        tipAmount.innerText = "$" + calculatedTip.toFixed(2);
+        total.innerText = "$" + numTotal.toFixed(2);
+    }
+    else {
+        inputAmt.classList.add('invalid');
+        billAmt.innerText = "";
+        tipPercent.innerText = "";
+        tipAmount.innerText = "";
+        total.innerText = "";
+    }
 }

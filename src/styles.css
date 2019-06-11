@@ -13,3 +13,7 @@
     background-color:greenyellow;
     border-radius:50%;
 }
+
+.invalid {
+    border-color:red;
+}
